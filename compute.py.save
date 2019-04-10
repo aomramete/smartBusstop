@@ -1,0 +1,31 @@
+from flask import Flask, request
+from flask_restful import Resource, Api
+from json import dumps
+from math import sin, cos, sqrt, atan2, radians
+import random
+
+app = Flask(__name__)
+api = Api(app)
+
+import requests
+import ti
+def compute():
+        if x >= 43:
+                return '0'
+        else:
+                percentage = ((43 - x)/43)*100
+                return str(percentage)
+
+class bin_status(Resource):
+        def get(self):
+                response = requests.get("http://35.194.54.94:8080/sensors/project_id/smartbin")
+                bin_status = response.json()
+                for i in range(len(bin_status)):
+                        print(check_fullbin(int(bin_status[i]["sensor_data"])))
+                        print(bin_percentage(int(bin_status[i]["sensor_data"])))
+                return bin_status
+
+api.add_resource(bin_status, '/binstatus')
+
+if __name__ == '__main__':
+     app.run(host = '0.0.0.0', port='8080', threaded=True)
