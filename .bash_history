@@ -144,3 +144,46 @@ nano compute.py
 python compute.py
 nano compute.py
 python compute.py
+nano compute.py
+python compute.py
+nano compute.py
+which git
+sudo apt-get update
+sudo apt-get install git
+which git
+git init
+git add .
+git commit -m "initial commit"
+git commit -m "initial commit"git config --global user.name "aomramete"
+git config --global user.name "aomramete"
+git remote add origin https://github.com/aomramete/Smart-Busstop
+git push -u origin master
+git remote add origin github.com/aomramete/Smart-Busstop
+git push -u origin master
+git push -f origin master
+git push -u origin master
+git pull --rebase origin master
+git remote add origin github.com/aomramete/Smart-Busstop
+git push -u origin master
+git push -f
+git push -f origin master
+git checkout master
+git push -f origin master
+git add .
+git commit -m "initial commit"
+git push -f origin master
+rm compute.py.save
+ls
+rm compute.py.save.1
+rm compute.py.save.2
+rm compute.py.save.3
+ls
+git add .
+git commit -m "initial commit"
+git init
+git add .
+git commit -m "initial commit"
+git remote add origin https://github.com/aomramete/Smart-Busstop
+git add .
+git commit -m "initial commit"
+git push -u origin master
