@@ -27,7 +27,10 @@ def allsensors():
     cur.execute("select BusID,Latitude, Longitude from busgps order by ID desc limit 1;")
     data = [dict((cur.description[i][0], value)
               for i, value in enumerate(row)) for row in cur.fetchall()]
-    return data[0]["Latitude"]
+    for coor in data:
+	lat = coor["Latitude"]
+	lon = coor["Longitude"]
+	return jsonify({"coordinate": [lat, lon]})
 
 @app.route('/stops/<ID>')
 def stops_byNum(ID=None):
@@ -66,20 +69,9 @@ def get(ID):
                 	time = (meter/avgspeed)/60
                 	time = int(time)
         #4      return "Estimated arriving time: ", time
-                	busstopno = coor["StopName"]
-			dest = coor["StopName"] 
-             	return jsonify({'Station' : busstopno},{'Destination': dest},{'Arrival time in mins': str(time)})
-
-@app.route('/busstops/<ID>')
-def get_latbus(ID=None):
-	url = "http://104.196.38.182:8080/stops/" + ID
-	response = requests.get(str(url))
-        ID = response.json()
-	data = []
-	for i in ID:
-		new_data = {'Latitude': ID[i]["Latitude"],'Longitude': ID[i]["Longitude"]}
-		data.append(new_data)
-	return json.dumps(data)
+                	busstopno = coor["Latitude"],coor["Longitude"]
+			dest = (coor["StopName"])
+             	return jsonify({'Location of bus stop' : busstopno},{'Destination': dest},{'Arrival time in mins': str(time)})
 
 if __name__ == '__main__':
      app.run(host = '0.0.0.0', port='8080', threaded=True, debug=True)
